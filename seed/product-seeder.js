@@ -15,9 +15,20 @@ var products = [
 	price: 112000}),
 	new Product({
 	imagePath: 'https://static.acer.com/up/Resource/Acer/Smartphones/Liquid%20Z630S/Images/20151001/Acer-smartphone-Liquid-Z630S-Black-gold-preview.png',
-	title: 'Acer Mobile',
+	title: 'HTC Mobile',
 	description: 'Make in India mobile',
 	price: 1200}),
+	new Product({
+	imagePath: 'http://article.images.consumerreports.org/prod/content/dam/cro/news_articles/Electronics/CR-ELectronics-Smartphone-Battery-Life-Motorola-Droid-Turbo-BN-II-2-16',
+	title: 'Moto',
+	description: 'Moto by Lenovo and developed by Google',
+	price: 1800}),
+	new Product({
+	imagePath: 'http://cdn01.androidauthority.net/wp-content/uploads/2014/10/Honor-6-white-710x310.png',
+	title: 'HTC',
+	description: 'HTC Latest',
+	price: 1800}),
+
 ];
 
 
