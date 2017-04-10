@@ -1,0 +1,1 @@
+A shopping kart project being developed with Node.
