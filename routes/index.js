@@ -23,25 +23,12 @@ router.get('/', function(req, res, next) {
 });
 
 
+/* GET routes */
 router.get('/user/signup', function(req, rep, next){
 	var messages = req.flash('error');
 	//console.log(messages);
 	rep.render('user/signup', { csrfToken: req.csrfToken(), messages: messages, hasErrors: messages.length > 0 });
 });
-
-
-/* POST user signup page. */
-router.post('/user/signup', passport.authenticate('local.signup', {
-	successRedirect: '/user/profile',
-	failureRedirect: '/user/signup',
-	failureFlash: true
-}));
-
-
-router.get('/user/profile', function(req, rep, next){
-	rep.render('user/profile');
-});
-
 
 router.get('/user/signin', function(req, rep, next){
 	var messages = req.flash('error');
@@ -49,10 +36,25 @@ router.get('/user/signin', function(req, rep, next){
 	rep.render('user/signin', { csrfToken: req.csrfToken(), messages: messages, hasErrors: messages.length > 0 });
 });
 
+
+/* POST routes */
+router.post('/user/signup', passport.authenticate('local.signup', {
+	successRedirect: '/user/profile',
+	failureRedirect: '/user/signup',
+	failureFlash: true
+}));
+
 router.post('/user/signin', passport.authenticate('local.signin', {
 	successRedirect: '/user/profile',
 	failureRedirect: '/user/signin',
 	failureFlash: true
 }));
+
+
+/* common route */
+router.get('/user/profile', function(req, rep, next){
+	rep.render('user/profile');
+});
+
 
 module.exports = router;
