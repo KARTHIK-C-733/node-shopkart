@@ -1,10 +1,7 @@
 var express = require('express');
-var csrf = require('csurf');
-var passport = require('passport');
 var router = express.Router();
 var Product = require('../models/product');
-var csrfProtection = csrf();
-router.use(csrfProtection);
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -21,40 +18,5 @@ router.get('/', function(req, res, next) {
 		res.render('shop/index', { title: 'Node Shop-Kart', products: productsChunk });
 	});
 });
-
-
-/* GET routes */
-router.get('/user/signup', function(req, rep, next){
-	var messages = req.flash('error');
-	//console.log(messages);
-	rep.render('user/signup', { csrfToken: req.csrfToken(), messages: messages, hasErrors: messages.length > 0 });
-});
-
-router.get('/user/signin', function(req, rep, next){
-	var messages = req.flash('error');
-	//console.log(messages);
-	rep.render('user/signin', { csrfToken: req.csrfToken(), messages: messages, hasErrors: messages.length > 0 });
-});
-
-
-/* POST routes */
-router.post('/user/signup', passport.authenticate('local.signup', {
-	successRedirect: '/user/profile',
-	failureRedirect: '/user/signup',
-	failureFlash: true
-}));
-
-router.post('/user/signin', passport.authenticate('local.signin', {
-	successRedirect: '/user/profile',
-	failureRedirect: '/user/signin',
-	failureFlash: true
-}));
-
-
-/* common route */
-router.get('/user/profile', function(req, rep, next){
-	rep.render('user/profile');
-});
-
 
 module.exports = router;
