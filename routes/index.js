@@ -45,4 +45,14 @@ router.get('/shopping-cart', function(req, rep, next){
 	return rep.render('shop/shopping-cart', {products:cart.generateArray(), totalPrice: cart.totalPrice});
 });
 
+
+router.get('/checkout', function(req, rep, next){
+	if (!req.session.cart){
+		console.log('handling no items in cart');
+		return rep.redirect('/shopping-cart')
+	}
+	var cart = new Cart(req.session.cart);
+	rep.render('shop/checkout', {total: cart.totalPrice});
+});
+
 module.exports = router;
