@@ -6,6 +6,7 @@ var Cart = require('../models/cart');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+	var successMsg = req.flash('success')[0];
 	var products = Product.find(function(err, data){
 
 		//console.log(data);
@@ -16,7 +17,7 @@ router.get('/', function(req, res, next) {
 		}
 
 		//console.log(productsChunk);
-		res.render('shop/index', { title: 'Node Shop-Kart', products: productsChunk });
+		res.render('shop/index', { title: 'Node Shop-Kart', products: productsChunk, successMsg: successMsg, noMessage: !successMsg});
 	});
 });
 
@@ -48,11 +49,41 @@ router.get('/shopping-cart', function(req, rep, next){
 
 router.get('/checkout', function(req, rep, next){
 	if (!req.session.cart){
-		console.log('handling no items in cart');
+		//console.log('handling no items in cart');
 		return rep.redirect('/shopping-cart')
 	}
 	var cart = new Cart(req.session.cart);
-	rep.render('shop/checkout', {total: cart.totalPrice});
+	var errMsg = req.flash('error')[0];
+	rep.render('shop/checkout', {total: cart.totalPrice, errMsg: errMsg, noErrors: !errMsg});
+});
+
+router.post('/checkout', function(req, rep, next){
+	if (!req.session.cart){
+		//console.log('handling no items in cart');
+		return rep.redirect('/shopping-cart')
+	}
+
+	var cart = new Cart(req.session.cart);
+	var stripe = require("stripe")(
+  		"sk_test_pJyz61oy4yINK6u7rk46qmIF"
+	);
+
+	stripe.charges.create({
+  		amount: cart.totalPrice * 100,
+  		currency: "usd",
+  		source: req.body.stripeToken, // obtained with Stripe.js
+  		description: "Charge for node-shopkart purchase"
+		}, 
+		function(err, charge) {
+  			// asynchronously called
+  			if(err) {
+  				req.flash('error', err.message);
+  				return rep.redirect('/checkout');
+  			}
+  			req.flash('success', 'Items successfully bought from node-shopkart with stripe gateway');
+  			req.session.cart =  null;
+  			rep.redirect('/');
+		});
 });
 
 module.exports = router;
