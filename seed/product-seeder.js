@@ -28,7 +28,11 @@ var products = [
 	title: 'HTC',
 	description: 'HTC Latest',
 	price: 1800}),
-
+	new Product({
+	imagePath: 'http://assets.reviews.com/uploads/2015/09/18190915/Smartphone1.jpg',
+	title: 'Apple iPhone 7',
+	description: 'Latest from the Apple Inc',
+	price: 72000}),
 ];
 
 
