@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var Product = require('../models/product');
 var Cart = require('../models/cart');
-
+var Order = require('../models/order');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -37,15 +37,14 @@ router.get('/add-to-cart/:id', function(req, rep, next){
 });
 
 
-router.get('/shopping-cart', function(req, rep, next){
+router.get('/shopping-cart', loginRequired, function(req, rep, next){
 	if (!req.session.cart){
-		console.log('handling no items in cart');
+		//console.log('handling no items in cart');
 		return rep.render('shop/shopping-cart', {products:null})
 	}
 	var cart = new Cart(req.session.cart);
 	return rep.render('shop/shopping-cart', {products:cart.generateArray(), totalPrice: cart.totalPrice});
 });
-
 
 router.get('/checkout', function(req, rep, next){
 	if (!req.session.cart){
@@ -57,7 +56,7 @@ router.get('/checkout', function(req, rep, next){
 	rep.render('shop/checkout', {total: cart.totalPrice, errMsg: errMsg, noErrors: !errMsg});
 });
 
-router.post('/checkout', function(req, rep, next){
+router.post('/checkout', loginRequired, function(req, rep, next){
 	if (!req.session.cart){
 		//console.log('handling no items in cart');
 		return rep.redirect('/shopping-cart')
@@ -80,10 +79,28 @@ router.post('/checkout', function(req, rep, next){
   				req.flash('error', err.message);
   				return rep.redirect('/checkout');
   			}
-  			req.flash('success', 'Items successfully bought from node-shopkart with stripe gateway');
-  			req.session.cart =  null;
-  			rep.redirect('/');
+  			var order = new Order({
+  				user: req.user,
+  				cart: cart,
+  				address: req.body.address,
+  				name: req.body.name,
+  				paymentId: charge.id
+  			});
+  			order.save(function(err, result){
+	  			req.flash('success', 'Successfully bought the cart item/s');
+	  			req.session.cart =  null;
+	  			rep.redirect('/');
+  			});
 		});
 });
 
 module.exports = router;
+
+
+function loginRequired(req, rep, next){
+	if (req.isAuthenticated()){
+		return next();
+	}
+	req.session.oldUrl = req.url;
+	rep.redirect('/user/signin');
+}
