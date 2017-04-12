@@ -39,10 +39,10 @@ router.get('/add-to-cart/:id', function(req, rep, next){
 router.get('/shopping-cart', function(req, rep, next){
 	if (!req.session.cart){
 		console.log('handling no items in cart');
-		rep.render('shop/shopping-cart', {products:null})
+		return rep.render('shop/shopping-cart', {products:null})
 	}
 	var cart = new Cart(req.session.cart);
-	rep.render('shop/shopping-cart', {products:cart.generateArray(), totalPrice: cart.totalPrice});
+	return rep.render('shop/shopping-cart', {products:cart.generateArray(), totalPrice: cart.totalPrice});
 });
 
 module.exports = router;
