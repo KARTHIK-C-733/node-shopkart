@@ -73,7 +73,7 @@ router.post('/signup', passport.authenticate('local.signup', {
 		if (req.session.oldUrl){
 			var oldUrl = req.session.oldUrl;
 			req.session.oldUrl = null;
-			rep.redirect(oldUrl);
+			return rep.redirect(oldUrl);
 		}
 		rep.redirect('/user/profile')
 });
@@ -86,7 +86,7 @@ router.post('/signin', passport.authenticate('local.signin', {
 		if (req.session.oldUrl){
 			var oldUrl = req.session.oldUrl;
 			req.session.oldUrl = null;
-			rep.redirect(oldUrl);
+			return rep.redirect(oldUrl);
 		}
 		rep.redirect('/user/profile')
 });
