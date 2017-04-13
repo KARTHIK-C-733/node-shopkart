@@ -39,16 +39,11 @@ passport.use('local.signup', new LocalStrategy({
 			}
 			var newUser = new User();
 			newUser.email = email;
-			//newUser.password = newUser.encryptPassword(password);
-			newUser.password = password;
-			//console.log(newUser);
+			newUser.password = newUser.encryptPassword(password);
 			newUser.save(function(err, result){
 				if (err){
-					//console.log('new user not saved');
-					//console.log(err);
 					return done(err);
 				}
-				//console.log('new user saved');
 				return done(null, newUser);
 			});
 		})}
