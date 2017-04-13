@@ -20,7 +20,7 @@ router.get('/profile', loginRequired, function(req, rep, next){
 			cart = new Cart(order.cart);
 			order.items = cart.generateArray();
 		});
-		rep.render('user/profile', {orders: orders});
+		rep.render('user/profile', {orders: orders, user: req.user.email.split('@')[0].toUpperCase()});
 	});
 });
 
