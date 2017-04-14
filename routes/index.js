@@ -32,7 +32,7 @@ router.get('/add-to-cart/:id', function(req, rep, next){
 		}
 		cart.add(product, product.id);
 		req.session.cart = cart;
-		console.log(req.session.cart);
+		//console.log(req.session.cart);
 		rep.redirect('/');
 	});
 });
