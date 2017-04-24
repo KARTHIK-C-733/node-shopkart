@@ -1,7 +1,7 @@
 var Product = require('../models/product');
 var mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
-mongoose.connect('mongodb://heroku_gcrz5q61:vihal7bnfuql5ile81rtu0acsb@ds139725.mlab.com:39725/heroku_gcrz5q61/shopping');
+mongoose.connect(process.env.MONGODB_URI);
 
 var products = [ 
 	new Product({
