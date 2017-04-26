@@ -5,35 +5,35 @@ mongoose.connect(process.env.MONGODB_URI);
 
 var products = [ 
 	new Product({
-	imagePath: 'http://www.gadgetninja.in/wp-content/uploads/2015/09/letv.jpg',
-	title: 'One +3',
-	description: 'Amazing gazetted smart phone!!!!',
+	imagePath: 'http://asianetindia.com/wp-content/uploads/2012/11/Lenovo-smartphones.jpg',
+	title: 'Intel Inside',
+	description: 'Cool and most advanced super gazetted mobile phone',
 	price: 19000}),
 	new Product({
-	imagePath: 'https://gigaom.com/wp-content/uploads/sites/1/2013/10/lg-g-flex-curved-640x426.jpg',
-	title: 'Another one from LG',
-	description: 'LG smart phone',
-	price: 10000}),
+	imagePath: 'http://www3.lenovo.com/medias/lenovo-smartphone-Vibe-p1m-front-back-list.png?context=bWFzdGVyfHJvb3R8MjczOTB8aW1hZ2UvcG5nfGg2Zi9oMWMvOTM0OTEyODYxODAxNC5wbmd8ZDAwMjU0ODk4ZjlkZWFiYzAwN2VkNzg3MTU0MjA3MzU0ZGM5NWEwNzI2MDYwMGVkN2VhZTVmNmU5ZDZiMjg1ZQ',
+	title: 'Lenovo Vibe',
+	description: 'A Lenovo Product',
+	price: 9999}),
 	new Product({
-	imagePath: 'http://cdn.xyloor.com/id/Micromax-Yu-Yureka-4G.jpg',
-	title: 'Micromax YU-Yureka ',
-	description: 'Made in India For Indians',
-	price: 12000}),
+	imagePath: 'http://www.gizbot.com/img/2017/01/everythingaboutthenewlylaunchednokia6-image-08-1483858286.jpg',
+	title: 'Nokia Bang Bang ',
+	description: 'A banger from the old pie Nokia',
+	price: 8999}),
 	new Product({
-	imagePath: 'http://img.techentice.com/img/priv.jpg',
-	title: 'Black Berry Mobile',
-	description: 'Latest smartphone from Blackberry Inc',
-	price: 39000}),
+	imagePath: 'http://static.dnaindia.com/sites/default/files/styles/half/public/2015/08/18/366759-eluga-i21.jpg?itok=7bBKl7QY',
+	title: 'Panasonic Eluga',
+	description: 'Elegance from Panasonic',
+	price: 12999}),
 	new Product({
-	imagePath: 'http://www.sagmart.com/other_images/Samsung-Galaxy-S5.jpg',
-	title: 'SamSung Galaxy S5',
-	description: 'Samsung Mobile',
-	price: 48000}),
+	imagePath: 'http://st1.bgr.in/wp-content/uploads/2014/06/android-smartphone.jpg',
+	title: 'Android Kitkat',
+	description: 'A device from the Android OS designer',
+	price: 7599}),
 	new Product({
-	imagePath: 'http://cdn.gsmarena.com/imgroot/news/15/10/letv-le-1s-official/inline/-728/gsmarena_005.jpg',
-	title: 'LeEco 1s',
-	description: 'LeEco Made in China cool smartphone',
-	price: 8500}),
+	imagePath: 'http://www.infocusindia.co.in/images/bingo21.jpg',
+	title: 'InFocus',
+	description: 'Focus your stuff with InFocus Phone',
+	price: 8499}),
 ];
 
 
