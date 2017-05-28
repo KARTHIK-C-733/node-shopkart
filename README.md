@@ -8,3 +8,4 @@
 4. Mongo(Datastore)
 5. Handlebars(Templating)
 6. Moongoose(ORM)
+7. User Authentication(Google Recaptcha, Node Passport)
