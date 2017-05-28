@@ -18,7 +18,8 @@ var userRoutes = require('./routes/user');
 
 var app = express();
 mongoose.Promise = require('bluebird');
-mongoose.connect(process.env.MONGODB_URI);
+//mongoose.connect(process.env.MONGODB_URI);
+mongoose.connect('mongodb://localhost:27017/shopping');
 require('./config/passport');
 
 // view engine setup

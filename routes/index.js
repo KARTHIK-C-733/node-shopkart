@@ -5,7 +5,7 @@ var Cart = require('../models/cart');
 var Order = require('../models/order');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', function(req, rep, next) {
 	var successMsg = req.flash('success')[0];
 	var products = Product.find(function(err, data){
 
@@ -17,7 +17,7 @@ router.get('/', function(req, res, next) {
 		}
 
 		//console.log(productsChunk);
-		res.render('shop/index', { title: 'Node Shop-Kart', products: productsChunk, successMsg: successMsg, noMessage: !successMsg});
+		rep.render('shop/index', { title: 'Node Shop-Kart', products: productsChunk, successMsg: successMsg, noMessage: !successMsg});
 	});
 });
 
