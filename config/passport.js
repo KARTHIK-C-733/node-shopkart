@@ -60,23 +60,29 @@ passport.use('local.signin', new LocalStrategy({
 		req.checkBody('email', 'Invalid Email').notEmpty();
 		req.checkBody('password', 'Invalid password').notEmpty();
 		var errors = req.validationErrors();
+		console.log('errors in passport module :' + errors);
 		if (errors) {
 			var messages = [];
 			errors.forEach(function(error){
 				messages.push(error.msg);
 			});
+			console.log('authentication failed');
 			return done(null, false, req.flash('error', messages));
 		}
 		User.findOne({'email': email}, function(err, user){
 			if (err){
+				console.log('authentication failed');
 				return done(err);
 			}
 			if (!user){
+				console.log('authentication failed');
 				return done(null, false, {message: 'No user found.'});
 			}
 			if (!user.validPassword(password)){
+				console.log('authentication failed');
 				return done(null, false, {message: 'Wrong password'});
 			}
+			console.log('authentication suceeded');
 			return done(null, user);
 		});}
 ));
