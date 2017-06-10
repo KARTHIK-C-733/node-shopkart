@@ -81,7 +81,7 @@ router.post('/signup', passport.authenticate('local.signup', {
 		rep.redirect('/user/profile')
 });
 
-router.post('/signin', captchaAuthenticated, passport.authenticate('local.signin', {
+router.post('/signin', isCaptchaAuthenticated, passport.authenticate('local.signin', {
     failureRedirect: '/user/signin',
     failureFlash: true
     }),
@@ -112,7 +112,7 @@ function notLoggedIn(req, rep, next){
 
 var SECRET = "6Lf6MiMUAAAAAITkPa-SME0g2F9hichphptF1AQf";
 
-function captchaAuthenticated(req, rep, next){
+function isCaptchaAuthenticated(req, rep, next){
     var key = req.body["g-recaptcha-response"];
     https.get("https://www.google.com/recaptcha/api/siteverify?secret=" + SECRET + "&response=" + key, function(res) {
                 var data = "";
