@@ -112,6 +112,7 @@ function notLoggedIn(req, rep, next){
 
 var SECRET = "6Lf6MiMUAAAAAITkPa-SME0g2F9hichphptF1AQf";
 
+// middleware for captcha validations
 function isCaptchaAuthenticated(req, rep, next){
     var key = req.body["g-recaptcha-response"];
     https.get("https://www.google.com/recaptcha/api/siteverify?secret=" + SECRET + "&response=" + key, function(res) {
