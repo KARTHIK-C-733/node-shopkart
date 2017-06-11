@@ -1,3 +1,5 @@
+![Application Landing Banner](https://github.com/nirajKpanda/node-shopkart/blob/master/public/images/app-landing-page.PNG)
+
 # A shopping cart project developed with Node JS.
 
 ## Development tools
