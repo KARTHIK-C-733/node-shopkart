@@ -1,4 +1,4 @@
-  <div class="container-fluid navbar-fixed-top" style="background-color:#131516">
+  <div class="container-fluid navbar-fixed-top navbar-style">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -7,8 +7,47 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/">Node Shop-Kart</a>
+      <a class="navbar-brand" href="/">
+        <strong class="font-weight-bold">The Mobile Shop</strong>
+      </a>
     </div>
+
+    <!-- Global Product Search Bar Html Starts -->   
+    <div class="col-xs-6 col-xs-offset-1 vcenter">
+        <div class="input-group">
+            <div class="input-group-btn search-panel">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    <span id="search_concept">All</span> <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu scrollable-dropdown" role="menu">
+                  <li><a href="#">Apple</a></li>
+                  <li><a href="#">Oppp</a></li>
+                  <li><a href="#">Vivo</a></li>
+                  <li><a href="#">Gionee</a></li>
+                  <li><a href="#">Lava</a></li>
+                  <li><a href="#">Micromax</a></li>
+                  <li><a href="#">LeEco</a></li>
+                  <li><a href="#">Moto</a></li>
+                  <li><a href="#">Google</a></li>
+                  <li><a href="#">Asus</a></li>
+                  <li><a href="#">Sony</a></li>
+                  <li><a href="#"></a></li>
+                  <li><a href="#">Automotive Accesories</a></li>
+                  <li><a href="#">Cell Phone Accesories</a></li>
+                  <li><a href="#">Computer Accesories</a></li>
+                  <li><a href="#">Health and Personal Care</a></li>
+                </ul>
+            </div> 
+            <input type="hidden" name="search_param" value="all" id="search_param">
+            <input type="text" class="form-control" name="x" id="search" placeholder="Search for your desired phone">
+            <span class="input-group-btn">
+               <button class="btn btn-default" type="button">
+                   <span class="glyphicon glyphicon-search"></span>
+              </button>
+            </span>
+       </div>
+   </div>
+   <!-- Global Product Search Bar Html Ends-->   
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

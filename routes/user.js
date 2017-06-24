@@ -49,7 +49,7 @@ router.get('/', function(req, res, next) {
 		}
 
 		//console.log(productsChunk);
-		res.render('shop/index', { title: 'Node Shop-Kart', products: productsChunk });
+		res.render('shop/index', { title: 'Grab Mobiles Online', products: productsChunk });
 	});
 });
 

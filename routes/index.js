@@ -17,7 +17,7 @@ router.get('/', function(req, rep, next) {
 		}
 
 		//console.log(productsChunk);
-		rep.render('shop/index', { title: 'Node Shop-Kart', products: productsChunk, successMsg: successMsg, noMessage: !successMsg});
+		rep.render('shop/index', { title: 'Grab Mobiles Online', products: productsChunk, successMsg: successMsg, noMessage: !successMsg});
 	});
 });
 
