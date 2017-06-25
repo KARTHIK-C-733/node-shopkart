@@ -83,7 +83,7 @@ node seed/product-seeder.js
 or
 
 ```
-npm seed
+npm run seed
 ```
 
 # start the application
