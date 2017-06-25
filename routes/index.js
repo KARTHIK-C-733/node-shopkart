@@ -153,7 +153,6 @@ function handle_product_landing(err, req, rep, data){
 		for (var i = 0; i <= data.length; i += chunkSize ){
 			productsChunk.push(data.slice(i, i + chunkSize));
 		}
-		console.log(productsChunk);	
 
 		rep.render('shop/index',
 			{ 
