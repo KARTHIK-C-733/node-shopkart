@@ -18,9 +18,16 @@ router.get('/search/:query', function(req, rep, next){
 	var _query = req.params.query;
 	if (_query) {
        const regex = new RegExp(escapeRegex(_query), 'gi');
-       Product.find({ "title": regex }, function(err, data){
-           handle_product_landing(err, req, rep, data);
-	   }); 
+       Product.find({ 
+       		"$or": [{
+        		"title": regex
+    			}, {
+        		"description": regex
+    		}]
+            }, 
+       		function(err, data){
+         		handle_product_landing(err, req, rep, data);
+         	}); 
     }
     else{
     	return rep.redirect('/')
