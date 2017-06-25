@@ -21,27 +21,46 @@
                 </button>
                 <ul class="dropdown-menu scrollable-dropdown" role="menu">
                   <li><a href="#">Apple</a></li>
-                  <li><a href="#">Oppp</a></li>
-                  <li><a href="#">Vivo</a></li>
-                  <li><a href="#">Gionee</a></li>
-                  <li><a href="#">Lava</a></li>
-                  <li><a href="#">Micromax</a></li>
-                  <li><a href="#">LeEco</a></li>
-                  <li><a href="#">Moto</a></li>
-                  <li><a href="#">Google</a></li>
                   <li><a href="#">Asus</a></li>
+                  <li><a href="#">Blackberry</a></li>
+                  <li><a href="#">Gionee</a></li>
+                  <li><a href="#">Google</a></li>
+                  <li><a href="#">HTC</a></li>
+                  <li><a href="#">Honor</a></li>
+                  <li><a href="#">Huawei</a></li>
+                  <li><a href="#">i-Ball</a></li>
+                  <li><a href="#">InFocus</a></li>
+                  <li><a href="#">Intex</a></li>
+                  <li><a href="#">Lava</a></li>
+                  <li><a href="#">LeEco</a></li>
+                  <li><a href="#">Lenovo</a></li>
+                  <li><a href="#">LG</a></li>
+                  <li><a href="#">Micromax</a></li>
+                  <li><a href="#">Microsoft</a></li>
+                  <li><a href="#">Moto</a></li>
+                  <li><a href="#">Nokia</a></li>
+                  <li><a href="#">OnePlus</a></li>
+                  <li><a href="#">Oppp</a></li>
+                  <li><a href="#">Panasonic</a></li>
+                  <li><a href="#">Samsung</a></li>
                   <li><a href="#">Sony</a></li>
-                  <li><a href="#"></a></li>
-                  <li><a href="#">Automotive Accesories</a></li>
-                  <li><a href="#">Cell Phone Accesories</a></li>
-                  <li><a href="#">Computer Accesories</a></li>
-                  <li><a href="#">Health and Personal Care</a></li>
+                  <li><a href="#">Vivo</a></li>
+                  <li><a href="#">Videocon</a></li>
+                  <li><a href="#">Xiaomi</a></li>
                 </ul>
             </div> 
             <input type="hidden" name="search_param" value="all" id="search_param">
-            <input type="text" class="form-control" name="x" id="search" placeholder="Search for your desired phone">
+            <input type="text" 
+                   class="form-control" 
+                   name="x" 
+                   id="search" 
+                   placeholder="Search for your desired phone"
+            >
             <span class="input-group-btn">
-               <button class="btn btn-default" type="button">
+               <button class="btn btn-default" type="button"
+                onclick="var term = document.getElementById('search').value;
+                         var url = 'http://localhost:3000/search/' + term;
+                        location.href=url;">
                    <span class="glyphicon glyphicon-search"></span>
               </button>
             </span>
