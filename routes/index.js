@@ -7,18 +7,8 @@ var Order = require('../models/order');
 
 /* GET home page. */
 router.get('/', function(req, rep, next) {
-	var successMsg = req.flash('success')[0];
 	var products = Product.find(function(err, data){
-
-		//console.log(data);
-		var  productsChunk = [];
-		var chunkSize = 3;
-		for (var i = 0; i <= data.length; i += chunkSize ){
-			productsChunk.push(data.slice(i, i + chunkSize));
-		}
-
-		//console.log(productsChunk);
-		rep.render('shop/index', { title: 'Grab Mobiles Online', products: productsChunk, successMsg: successMsg, noMessage: !successMsg});
+		handle_product_landing(err, req, rep, data);
 	});
 });
 
@@ -26,30 +16,15 @@ router.get('/', function(req, rep, next) {
 /* Product search API */
 router.get('/search/:query', function(req, rep, next){
 	var _query = req.params.query;
-	console.log(_query);
-	console.log(req.params);
 	if (_query) {
        const regex = new RegExp(escapeRegex(_query), 'gi');
-       Product.find({ "title": regex }, function(err, data) {
-           if(err) {
-               console.log(err);
-           } else {
-				var successMsg = req.flash('success')[0];
-				var  productsChunk = [];
-				var chunkSize = 3;
-				for (var i = 0; i <= data.length; i += chunkSize ){
-					productsChunk.push(data.slice(i, i + chunkSize));
-				}
-				rep.render('shop/index', 
-					{ title: 'Grab Mobiles Online', 
-					  products: productsChunk, 
-					  successMsg: successMsg, 
-					  noMessage: !successMsg}
-				);
-		   }
-		}); 
+       Product.find({ "title": regex }, function(err, data){
+           handle_product_landing(err, req, rep, data);
+	   }); 
     }
-    return rep.redirect('/')
+    else{
+    	return rep.redirect('/')
+    }
 });
 
 
@@ -162,4 +137,27 @@ function loginRequired(req, rep, next){
 function escapeRegex(text) {
     return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
 };
-	
+
+function handle_product_landing(err, req, rep, data){
+	if (!err){	
+		var successMsg = req.flash('success')[0];
+		var  productsChunk = [];
+		var chunkSize = 3;
+		for (var i = 0; i <= data.length; i += chunkSize ){
+			productsChunk.push(data.slice(i, i + chunkSize));
+		}
+		console.log(productsChunk);	
+
+		rep.render('shop/index',
+			{ 
+				title: 'Grab Mobiles Online', 
+				products: productsChunk, 
+				successMsg: successMsg, 
+				noMessage: !successMsg
+			}
+		);
+	}
+	else{
+		console.error(err);
+	}	
+}
