@@ -4,7 +4,37 @@ mongoose.Promise = require('bluebird');
 //mongoose.connect(process.env.MONGODB_URI);
 mongoose.connect('localhost:27017/shopping');
 
-var products = [ 
+var products = [
+	new Product({
+	imagePath: 'https://i.ytimg.com/vi/k6LebeDlOkA/maxresdefault.jpg',
+	title: 'One Plus 5',
+	description: 'Smartphone with upto 8 GB of RAM.Super camera and gadget',
+	price: 35000}),
+	new Product({
+	imagePath: 'https://store.storeimages.cdn-apple.com/4974/as-images.apple.com/is/image/AppleInc/aos/published/images/i/ph/iphone7/plus/iphone7-plus-gold-select-2016?wid=300&hei=300&fmt=png-alpha&qlt=95&.v=1472430108712',
+	title: 'i-Phone 7S Plus',
+	description: 'Here a box with all you want from Apple Inc',
+	price: 72000}),
+	new Product({
+	imagePath: 'http://www.andho.com/wp-content/uploads/2017/01/Oppo-R9S.jpg',
+	title: 'Oppo',
+	description: 'Oppo Upcoming.Go prebook it!!!!!',
+	price: 19999}),
+	new Product({
+	imagePath: 'https://dlbgadget-sinfosoft.netdna-ssl.com/wp-content/uploads/2016/12/Gionee-S9-1.jpg',
+	title: 'Gionee SellfieSthan',
+	description: 'Here is your SellfieSthan',
+	price: 21599}),
+	new Product({
+	imagePath: 'http://images.deccanchronicle.com/dc-Cover-3t5eu7luhi8225ccbt7tr4j1s3-20170323125058.Medi.jpeg',
+	title: 'Latest Lava Box',
+	description: 'With most desi avatar',
+	price: 12000}),
+	new Product({
+	imagePath: 'http://images.fonearena.com/blog/wp-content/uploads/2016/05/micromax-canvas-6-gold-fonearena-2.jpg',
+	title: 'Micromax with you',
+	description: 'Devil is Here.Just own it',
+	price: 16899}),
 	new Product({
 	imagePath: 'http://asianetindia.com/wp-content/uploads/2012/11/Lenovo-smartphones.jpg',
 	title: 'Intel Inside',
